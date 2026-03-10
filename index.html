@@ -2226,3 +2226,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 </script>
 </body>
 </html>
+<script>
+const checkboxes = document.querySelectorAll(".task");
+
+// Load saved state
+window.onload = function () {
+    checkboxes.forEach((checkbox, index) => {
+        const saved = localStorage.getItem("task_" + index);
+        if (saved === "true") {
+            checkbox.checked = true;
+        }
+    });
+};
+
+// Save state when clicked
+checkboxes.forEach((checkbox, index) => {
+    checkbox.addEventListener("change", function () {
+        localStorage.setItem("task_" + index, checkbox.checked);
+    });
+});
+</script>
